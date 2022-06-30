@@ -26,7 +26,7 @@
     "rxjs": "^7.0.0",
     "sql.js": "^1.7.0",
     "tslib": "^2.3.0",
-    "typeorm": "^0.3.7"
+    "typeorm": "^0.2.45"
   },
   "devDependencies": {
     "@nestjs/schematics": "^8.0.0",
