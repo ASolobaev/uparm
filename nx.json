@@ -24,5 +24,20 @@
       "dependsOn": ["^build"]
     }
   },
-  "defaultProject": "server"
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "none",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "none"
+      },
+      "library": {
+        "style": "none",
+        "linter": "eslint"
+      }
+    }
+  }
 }
