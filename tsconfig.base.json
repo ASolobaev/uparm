@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@uparm/common/interfaces": ["libs/common/interfaces/src/index.ts"],
+      "@uparm/storage": ["libs/storage/src/index.ts"],
+      "@uparm/user/server-module": ["libs/user/server-module/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

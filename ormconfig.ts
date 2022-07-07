@@ -1,6 +1,6 @@
 import { Logger } from "@nestjs/common";
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
-import { join } from "pat";
+import { join } from "path";
 
 export default ((): TypeOrmModuleOptions => {
     let databasePath = '/dist/apps/server';
@@ -15,13 +15,13 @@ export default ((): TypeOrmModuleOptions => {
     const location = join(getFileLocation(__dirname), 'dev.db');
 
     Logger.log(`Подключение к СУБД SQLite по адресу: ${location}`, 'ormconfig.ts');
-    
+
     return {
         type: 'sqljs',
         location: location,
         autoSave: true,
         cache: true,
-        synchronize: false,
+        synchronize: true,
         retryAttempts: 1,
         autoLoadEntities: true,
         logging: 'all',
@@ -29,17 +29,6 @@ export default ((): TypeOrmModuleOptions => {
         cli: {
             migrationsDir: join(getFileLocation(__dirname), 'libs', 'storage', 'src', 'lib', 'migrations'),
         },
-        entities: [
-            join(getFileLocation(__dirname), 'libs', 'storage', 'src', 'lib', 'entities', '*.entity.{ts,js}'),
-            join(getFileLocation(__dirname), 'libs', 'storage', 'src', 'lib', 'entities', '**', '*.entity.{ts,js}')
-        ],
-        migrations: [
-            join(getFileLocation(__dirname), 'libs', 'storage', 'src', 'lib', 'migrations', '*.entity.{ts,js}'),
-            join(getFileLocation(__dirname), 'libs', 'storage', 'src', 'lib', 'migrations', '**', '*.entity.{ts,js}')
-        ],
-        subscribers: [
-            join(getFileLocation(__dirname), 'libs', 'storage', 'src', 'lib', 'subscribers', '*.entity.{ts,js}'),
-            join(getFileLocation(__dirname), 'libs', 'storage', 'src', 'lib', 'subscribers', '**', '*.entity.{ts,js}')
-        ],
+        entities: ["dist/**/*.entity.js"]
     }
 })();

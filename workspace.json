@@ -3,6 +3,9 @@
   "version": 2,
   "projects": {
     "client": "apps/client",
-    "server": "apps/server"
+    "common-interfaces": "libs/common/interfaces",
+    "server": "apps/server",
+    "storage": "libs/storage",
+    "user-server-module": "libs/user/server-module"
   }
 }
