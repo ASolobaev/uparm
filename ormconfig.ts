@@ -1,6 +1,6 @@
 import { Logger } from "@nestjs/common";
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
-import { join } from "path";
+import { join } from "pat";
 
 export default ((): TypeOrmModuleOptions => {
     let databasePath = '/dist/apps/server';
