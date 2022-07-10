@@ -29,9 +29,21 @@ export class UserService {
    * @param fullName
    * @return UserEntity|null
    */
-  public async getUserByName(fullName: string): Promise<UserEntity|null> {
-    // Ваш код тут
-    throw new NotImplementedException();
+
+  public async getUserByName(fullName: string): Promise<UserEntity | null> {
+    try {
+      return await this.userRepository.findOne({
+        where: {
+          fullName: fullName,
+          isActive: true
+        },
+        order: {
+          registrationDate: "ASC",
+        }
+      });
+    } catch (e) {
+      throw new NotImplementedException(e);
+    }
   }
 
   /**
@@ -46,7 +58,17 @@ export class UserService {
    * @return number|null
    */
   public async createNewUser(createUserDto: CreateUserDto): Promise<number|null> {
-    // Ваш код тут
-    throw new NotImplementedException();
+    try{
+      const user =  this.userRepository.create({
+        ...createUserDto,
+        phoneNumber: 'НЕ_УКАЗАНО',
+        orderCount: 0,
+        isActive: true
+      });
+      const newUser = await this.userRepository.save(user);
+      return newUser.id
+    } catch(e){
+      throw new NotImplementedException(e);
+    }
   }
 }
